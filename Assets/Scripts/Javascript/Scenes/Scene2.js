@@ -13,7 +13,7 @@ function Scene2() {
 			Time.SetTimeWhenSceneBegin();
 			// operation start
 			this.GameObjects.push( new Rectangle(100,100) );
-			this.GameObjects.push( new Circle(700,550) );
+			//this.GameObjects.push( new Circle(700,550) );
 			this.started = true;
 			console.log('%c System:Scene ' + this.name + " Started !", 'background:#222; color:#bada55');
 			Time.SetTimeWhenSceneLoaded();

@@ -79,18 +79,86 @@ var Physics = {
 			 } 
 		}
 		return false;
+	},
+	CheckCollision: function() {
+		//console.log(arguments.length);
+		if (arguments.length == 2 ) {
+			//console.log( arguments[0] instanceof Vector );
+			if (arguments[0] instanceof Vector ) {
+				if (arguments[1] instanceof Box) {
+					//console.log('PointBoxCollision');
+					return Physics.PointBoxCollision(arguments[0],arguments[1])
+				} else if (arguments[1] instanceof Circle) {
+					//console.log('PointCircleCollision');
+					return Physics.PointCircleCollision(arguments[0],arguments[1])
+				}
+			} else if (arguments[0] instanceof Box) {
+				if (arguments[1] instanceof Box) {
+					//console.log('BoxBoxCollision');
+					return Physics.BoxBoxCollision(arguments[0],arguments[1])
+				} else if (arguments[1] instanceof Circle) {
+					//console.log('CircleBoxCollision');
+					return Physics.CircleBoxCollision(arguments[1],arguments[0])
+				} else if (arguments[1] instanceof Vector) {
+					//console.log('PointBoxCollision');
+					return Physics.PointBoxCollision(arguments[1],arguments[0])
+				}
+			} else if (arguments[0] instanceof Circle) {
+				if (arguments[1] instanceof Box) {
+					//console.log('CircleBoxCollision');
+					return Physics.CircleBoxCollision(arguments[0],arguments[1])
+				} else if (arguments[1] instanceof Circle) {
+					//console.log('CircleCircleCollision');
+					return Physics.CircleCircleCollision(arguments[1],arguments[0])
+				} else if (arguments[1] instanceof Vector) {
+					//console.log('PointCircleCollision');
+					return Physics.PointBoxCollision(arguments[1],arguments[0])
+				}
+			}
+
+
+		} else if (arguments.length == 4 ) {
+			return TileCollision(arguments[0],arguments[1],arguments[2],arguments[3])
+		}
+	},
+	CheckClick: function() {
+		var GOs = Application.LoadedScene.GameObjects;
+		var mPos = new Vector();
+		mPos.x = Input.MousePosition.x;
+		mPos.y = Input.MousePosition.y;
+		for (index in GOs) {
+			var go = GOs[index];
+			if (go.Physics.Clickable) {
+				var hitbox = new Box(go.Physics.Collider.position.x,
+									go.Physics.Collider.position.y,
+									go.Physics.Collider.size.x,
+									go.Physics.Collider.size.y);
+				if (go.Physics.countHovered > 0) {
+					if (!Physics.CheckCollision(mPos, hitbox)) {
+						go.onUnHovered();
+					}
+				}
+				if ( Physics.CheckCollision(mPos, hitbox) ) {		
+					if (Input.MouseClick) {
+						go.onClicked();
+					} else {
+						go.onHover();
+					}
+				}
+			}
+		}
 	}
 };
 
 function Box(x,y,w,h) {
-	this.x = x;
-	this.y = y;
-	this.w = w;
-	this.h = h;
+	this.x = x ;
+	this.y = y ;
+	this.w = w ;
+	this.h = h ;
 }
 
 function Circle(cx,cy,r) {
-	this.x = cx;
-	this.y = cy;
-	this.radius = r;
+	this.x = cx ;
+	this.y = cy ;
+	this.radius = r ;
 }

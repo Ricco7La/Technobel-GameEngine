@@ -2,6 +2,21 @@ function GameObject() {
 	this.name = "Model";
 	this.enabled = true;
 	this.started = false;
+	
+	this.Transform = {};
+	this.Transform.position = new Vector();
+	this.Transform.size = new Vector();
+
+	this.Physics = {};
+	this.Physics.enabled = true;
+	this.Physics.Clickable = false;
+	this.Physics.dragAndDroppable = false;
+	this.Physics.ColliderIsSameSizeAsTransform = false;
+	this.Physics.countHovered = 0;
+	this.Physics.Collider = {
+		position: new Vector(),
+		size: new Vector()
+	};
 
 	this.Awake = function() {
 		console.clear();
@@ -12,6 +27,7 @@ function GameObject() {
 			// operation start
 
 			this.started = true;
+			this.
 			console.log('%c System:Scene ' + this.name + " Started !", 'background:#222; color:#bada55');
 		}
 		this.Update();
@@ -26,6 +42,16 @@ function GameObject() {
 	};
 	this.GUI = function() {
 		
+	}
+	this.onHover = function() {
+		this.Physics.countHovered ++;
+		
+	}
+	this.onClicked = function() {
+		this.Physics.countHovered ++;
+	}
+	this.onUnHovered = function() {
+		this.Physics.countHovered = 0;
 	}
 
 	this.Awake();

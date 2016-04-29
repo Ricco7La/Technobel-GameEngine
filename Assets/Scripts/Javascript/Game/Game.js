@@ -2,10 +2,13 @@ function Run(argument) {
 	Time.SetTimeValues();
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 
-	console.log('working');
+	//console.log('working');
+	//console.log(Math.Random.RangeFloat(0,1,true) == 0);
 	if (Application.LoadedScene != null) {
 		Application.LoadedScene.Start();
 	}
+
+	Physics.CheckClick();
 
 	RequestAnimationFrame(Run);
 }

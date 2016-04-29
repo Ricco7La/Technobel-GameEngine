@@ -2,6 +2,10 @@ function Circle(x,y,r) {
 	this.name = "Circle";
 	this.enabled = true;
 	this.started = false;
+	this.Physics = {};
+	this.Physics.Clickable = false;
+	this.Physics.countHovered = 0;
+	this.Physics.Collider = null;
 	this.x = x;
 	this.y = y;
 	this.r = r || 50;
@@ -32,6 +36,15 @@ function Circle(x,y,r) {
 	};
 	this.GUI = function() {
 		
+	}
+	this.onHover = function() {
+		this.countHovered ++;
+	}
+	this.onClicked = function() {
+		
+	}
+	this.onUnHovered = function() {
+		this.countHovered = 0;
 	}
 
 	this.Awake();

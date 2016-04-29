@@ -1,6 +1,6 @@
 var Input = {
 	KeysDown: [],
-	MousePosition: {},
+	MousePosition: new Vector(),
 	KeyDown: function(e) {
 		Input.KeysDown[e.keyCode] = true;
 	},
@@ -10,7 +10,7 @@ var Input = {
 	MouseDown: function(e) {
 		Input.MouseClick = true;
 		Input.MouseLongClick = true;
-		Input.MouseReload = 1;
+		Input.MouseReload = 1;		
 	},
 	MouseMove: function(e) {
 		var rect = canvas.getBoundingClientRect();

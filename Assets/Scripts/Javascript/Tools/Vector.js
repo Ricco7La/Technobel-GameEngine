@@ -1,6 +1,6 @@
-function Vector() {
-	this.x = 0;
-	this.y = 0;
+function Vector(x ,y ) {
+	this.x = x ;
+	this.y = y ;
 
 	this.add = function(vector) {
 		this.x += vector.x;
@@ -8,7 +8,7 @@ function Vector() {
 
 		return this;
 	}
-	this.add = function(vector) {
+	this.sub = function(vector) {
 		this.x -= vector.x;
 		this.y -= vector.y;
 
