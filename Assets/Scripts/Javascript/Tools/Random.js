@@ -10,14 +10,11 @@ Math.Random.RangeInt = function(min,max,isInclusive) {
 Math.Random.RangeFloat = function(min,max,isInclusive) {
 	if (isInclusive) {
 		var nMax = max + Number.EPSILON;
-		var nMin = min - Number.EPSILON;
-		var n = Math.random() * ( nMax  - nMin ) + nMin ; 
-		return Math.Clamp(n,min,max);
+		var n = Math.random() * ( nMax  - min ) + min ; 
+		return n;
 	} else {
-		var n = Math.random() * (max - min) + min;
-		if (n == min) {
-			n = Math.Random.RangeFloat(min,max,isInclusive);
-		}
+		var nMin = min + Number.EPSILON;
+		var n = Math.random() * (max - nMin) + nMin;
 		return n; 
 	}
 	
