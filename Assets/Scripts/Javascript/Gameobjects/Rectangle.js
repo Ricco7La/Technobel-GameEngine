@@ -39,7 +39,6 @@ function Rectangle(x,y,w,h) {
 			ctx.fillStyle = "yellow";
 			ctx.fillRect(this.Transform.position.x,this.Transform.position.y,this.Transform.size.x,this.Transform.size.y);
 			updateForDragAndDrop(this);
-			
 		}
 		this.GUI;	
 	};
@@ -55,10 +54,9 @@ function Rectangle(x,y,w,h) {
 	}
 	this.onClicked = function() {
 		this.Physics.countHovered ++;
-		if (this.Physics.dragAndDroppable) {
-			Input.MouseDraging = true;
+		if (this.Physics.dragAndDroppable) {	
 			Input.MouseDraggedElement = this;
-			
+			Input.MouseDraging = true;
 
 		}
 		console.log('click');

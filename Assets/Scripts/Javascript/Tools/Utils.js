@@ -7,13 +7,13 @@ function distPointToPoint(p1,p2) {
 	return Math.sqrt( (p1.x - p2.x)*(p1.x - p2.x)+(p1.y - p2.y)*(p1.y - p2.y) );
 }
 
-function updateForDragAndDrop(gameObject) {
+function updateForDragAndDrop(go) {
+	var gameObject = go;
 	if (Input.MouseDraging) {
 		gameObject.Transform.position.x = Input.MousePosition.x + gameObject.mousePositionOffset.x;
 		gameObject.Transform.position.y = Input.MousePosition.y + gameObject.mousePositionOffset.y;
 		
 		gameObject.Physics.Collider.position = gameObject.Transform.position;
-	
 	}
 }
 

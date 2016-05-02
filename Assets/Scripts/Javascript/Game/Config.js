@@ -7,12 +7,15 @@ gravity.y = -9.81;
 
 var Application = {
 	LoadedScene: null,
-	GamePaused: false
+	GamePaused: false,
+	debugMode: true
 };
 
+var ImagesLoaded = 0;
 var WalkableTiles = [];
 
 var ImagesPath = [
 	// { name:"monImage",path: "background/image.png"},
+	{ name:"sephiroth",path: "Spritesheet/sephiroth.png"}
 ];
 var Images = {};

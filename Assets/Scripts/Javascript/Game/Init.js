@@ -40,14 +40,14 @@ Application.LoadedScene = Scenes["Loader"];
 
 // Image Loader
 function LoadImages() {
-	// Images[name].src = "Assets/Graphics" + ImagesPath[name].path
+	//Images[name].src = "Assets/Graphics" + ImagesPath[name].path;
 	var count = 0;
 	for (var i = 0; i < ImagesPath.length; i++) {
 		var name = ImagesPath[i].name;
 		Images[name] = new Image();
-		Images[name].src = "Assets/Graphics" + ImagesPath[i].path;
+		Images[name].src = "Assets/Graphics/" + ImagesPath[i].path;
 		Images[name].onload = function() {
-			ImagesStillLoading --;
+			ImagesLoaded ++;
 			// Scene.loader.imageLoaded = count
 			if (count == ImagesPath.length) {
 				// All Image are Loaded

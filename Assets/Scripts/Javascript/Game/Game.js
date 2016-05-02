@@ -10,5 +10,7 @@ function Run(argument) {
 
 	Physics.CheckClick();
 
+	Debug.debugScene();
+
 	RequestAnimationFrame(Run);
 }

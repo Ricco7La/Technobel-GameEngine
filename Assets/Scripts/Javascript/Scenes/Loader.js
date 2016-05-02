@@ -10,10 +10,12 @@ function Loader() {
 	}
 	this.Start = function() {
 		if (!this.started) {
+			Time.SetTimeWhenGameBegin();
 			// operation start
+			LoadImages();
+
 			Scenes["Scene1"] = new Scene1();
 			Scenes["Scene2"] = new Scene2();
-
 			Application.LoadedScene = Scenes["Scene1"];
 			this.started = true;
 			console.log('%c System:Scene ' + this.name + " Started !", 'background:#222; color:#bada55');

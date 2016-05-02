@@ -9,15 +9,12 @@ Math.Random.RangeInt = function(min,max,isInclusive) {
 };
 Math.Random.RangeFloat = function(min,max,isInclusive) {
 	if (isInclusive) {
-		var nMax = max + Number.EPSILON;
-		var n = Math.random() * ( nMax  - min ) + min ; 
-		return n;
+		var max = max + Number.EPSILON;
 	} else {
-		var nMin = min + Number.EPSILON;
-		var n = Math.random() * (max - nMin) + nMin;
-		return n; 
+		var min = min + Number.EPSILON;
 	}
-	
+	console.log(max);
+	return Math.random() * (max - min) + min;
 };
 Math.Random.InArray = function(array) {
 	var index = Math.Random.RangeInt(0,array.length-1,true);
