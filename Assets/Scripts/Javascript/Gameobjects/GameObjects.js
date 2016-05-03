@@ -14,12 +14,13 @@ function GameObject() {
 	this.Physics.enabled = true;
 	this.Physics.Clickable = false;
 	this.Physics.dragAndDroppable = false;
-	this.Physics.ColliderIsSameSizeAsTransform = false;
+	this.Physics.ColliderIsSameSizeAsTransform = true;
 	this.Physics.countHovered = 0;
-	this.Physics.Collider = {
-		position: new Vector(),
-		size: new Vector()
-	};
+	this.Physics.Collider = {};
+	this.Physics.Collider.position = new Vector();
+	this.Physics.Collider.size = new Vector();
+
+	this.mousePositionOffset = null;
 
 	this.Renderer = {
 		isVisible: true,
@@ -32,11 +33,13 @@ function GameObject() {
 		},
 
 		Animation:{
-			animated: true;
+			animated: true,
 			animations: [],
 			current:[],
-			countdown:0
-		}
+			currentIndex:0,
+			totalAnimationLength: 0.5
+		},
+		AnimationCount: 0,
 		
 		Draw: function() {
 			if (this.isSpriteSheet) 
