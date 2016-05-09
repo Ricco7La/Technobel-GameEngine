@@ -2,6 +2,8 @@ var Input = {
 	KeysDown: [],
 	MousePosition: new Vector(),
 	KeyDown: function(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		Input.KeysDown[e.keyCode] = true;
 	},
 	KeyUp: function(e) {

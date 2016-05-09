@@ -9,8 +9,7 @@ function Run(argument) {
 	}
 
 	Physics.CheckClick();
-
-	Debug.debugScene();
+	if(Input.MouseReload > 0) Input.MouseClick = false;
 
 	RequestAnimationFrame(Run);
 }

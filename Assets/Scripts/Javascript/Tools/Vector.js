@@ -41,5 +41,14 @@ function Vector(x ,y ) {
 		v.div( this.length() );
 		return v;
 	}
+
+	this.getAngle = function() {
+		return Math.atan2(this.y, this.x);
+	}
+	this.fromAngle = function(angle) {
+		return new Vector(this.length() * Math.cos(angle),this.length() * Math.sin(angle));
+	}
+	this
+
 }
 

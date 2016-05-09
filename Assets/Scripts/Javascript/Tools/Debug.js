@@ -1,4 +1,29 @@
+/** 												
+* @prefix Debug: Contain all the property and the method of the extended class Debug.
+	**** Property of Debug ****
+*
+* @property SpriteOutlineColor 																							  {string} 			 
+* The gizmos color for the sprite bounds.
+*
+* @property ColliderOutlineColor 																						  {string} 			 
+* The gizmos color for the collider bounds.
+*
+	**** Methods of Debug ****
+* @method Log (): console.log() alternative.
+* @param1 {string}: logMsg
+ 
+* @method debugScene(): show statistics from game on the canvas.
+ 
+* @method Break(): alternative to debugger, create breakpoint.
+*/
+
 var Debug = {
+	SpriteOutlineColor: "grey",
+	ColliderColor: "green",
+
+	Break: function() { debugger; },
+	Log: function(logMsg)	{console.log(logMsg);},
+
 	debugScene : function() {
 		if (Application.debugMode) {
 			this.showFPS();
@@ -8,6 +33,12 @@ var Debug = {
 		}
 	},
 	showFPS : function() {
+		ctx.fillStyle = "rgba(122,122,122, 0.4)";
+		ctx.RoundedBox(4, 4, 120, 70, 20);
+	
+		ctx.fillStyle = "rgba(122,122,122, 0.4)";
+		ctx.RoundedBox(canvas.width - 130, 4, 125, 30, 20);
+
 		//console.log(Time.FPS);
 		if (Time.FPS > 40) {
 			ctx.fillStyle = "#65C065";
@@ -17,12 +48,13 @@ var Debug = {
 			ctx.fillStyle = "orange";
 		}
 		ctx.fillRect(15,15,20,20);
+		ctx.fillText("FPS: " + Time.FPS, 38, 30);
 		ctx.fillStyle = "black";
 	},
 	sceneName : function() {
 		ctx.font = '15px Arial';
 		ctx.fillStyle = 'black';
-		ctx.fillText(Application.LoadedScene.name, 45, 32);
+		ctx.fillText(Application.LoadedScene.name, canvas.width - 100, 20);
 	},
 	mousePosition : function() {
 		ctx.font = '10px Arial';
@@ -88,3 +120,5 @@ var Debug = {
 	}
 	
 }
+
+print = function (logMsg) {console.log(logMsg);};

@@ -21,15 +21,6 @@ window.addEventListener("mousedown",Input.MouseDown);
 window.addEventListener("mousemove",Input.MouseMove);
 
 
-document.getElementById('change').addEventListener('click', function() {
-	if (Application.LoadedScene == Scenes["Scene1"]) {
-		Application.LoadedScene = Scenes["Scene2"];
-	} else {
-		Application.LoadedScene = Scenes["Scene1"];
-	}
-})
-
-
 /********************
 		Start
 *********************/
@@ -47,7 +38,8 @@ function LoadImages() {
 		Images[name] = new Image();
 		Images[name].src = "Assets/Graphics/" + ImagesPath[i].path;
 		Images[name].onload = function() {
-			ImagesLoaded ++;
+			count ++;
+			Scenes.Loader.imageLoaded = count;
 			// Scene.loader.imageLoaded = count
 			if (count == ImagesPath.length) {
 				// All Image are Loaded
@@ -58,7 +50,22 @@ function LoadImages() {
 }
 function ImageLoaded(imageLoaded) {
 	console.log('%c System: ' + imageLoaded + " Loaded !", 'background:#222; color:#10ADED');
+	
+	ctx.drawImage(Images["alphaMask2"], 0, 0,canvas.width,canvas.height);
+
+	var pixelsMask = ctx.getImageData(0,0,canvas.width,canvas.height);
+	
+
+	AlphaMasks["alphaMask2"] = pixelsMask.data;
+
+	Scenes["SceneTest"] = new SceneTest();
+	Application.LoadedScene = Scenes["SceneTest"];
+	
 }
 
+
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 Run();
