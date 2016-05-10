@@ -5,6 +5,7 @@ var Time = {
 	FPS: 0,
 	TimeOfLastFrame: 0,
 	averageDelay: 0,
+	TweenCounter: 0,
 
 	GameStart:0,
 	GameLoaded:0,
